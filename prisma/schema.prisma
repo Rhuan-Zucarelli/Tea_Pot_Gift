@@ -68,3 +68,25 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model Gift {
+    id         Int      @id @default(autoincrement())
+    name       String
+    price      Int
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+    bought     Boolean
+    type       GiftType
+    boughtBy   String?
+    descripton String?
+    messages   String?
+    photoUrl   String
+
+    @@index([name])
+}
+
+enum GiftType {
+    PHYSICAL
+    DIGITAL
+    MONEY
+}
