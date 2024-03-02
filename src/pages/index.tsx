@@ -5,6 +5,7 @@ import Link from "next/link";
 import { GiftType, Gift } from "@prisma/client";
 import { api } from "next/utils/api";
 import { useState } from "react";
+import Cards from "./cards";
 
 export default function Home() {
   const createGift = api.gift.create.useMutation();
@@ -25,8 +26,14 @@ export default function Home() {
         <meta name="description" content="Cha de panela do Rhuan" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex h-screen flex-col bg-lime-50">
+
+
+      <main className="flex h-screen flex-col bg-gray-200">
         <div className="mx-auto flex flex-col">
+
+          <Cards >
+          </Cards>
+
           <input
             placeholder="name"
             value={form.name}
