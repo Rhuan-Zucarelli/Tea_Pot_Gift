@@ -5,6 +5,7 @@ import { type AppType } from "next/app";
 import { api } from "next/utils/api";
 
 import "next/styles/globals.css";
+import { ThemeProvider } from "next/components/ui/theme/theme-provider";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -12,7 +13,14 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="dark"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <Component {...pageProps} />
+      </ThemeProvider>
     </SessionProvider>
   );
 };

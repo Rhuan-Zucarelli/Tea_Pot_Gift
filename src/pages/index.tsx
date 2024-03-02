@@ -6,6 +6,13 @@ import { GiftType, Gift } from "@prisma/client";
 import { api } from "next/utils/api";
 import { useState } from "react";
 import Cards from "./cards";
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+} from "next/components/ui/card";
+import { z } from "zod";
 
 export default function Home() {
   const createGift = api.gift.create.useMutation();
@@ -19,6 +26,14 @@ export default function Home() {
     photoUrl: "",
   });
 
+  const formatMoney = (value: number) =>
+    Number.isInteger(value)
+      ? Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        }).format(value / 100)
+      : "...";
+
   return (
     <>
       <Head>
@@ -27,13 +42,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <main className="flex h-screen flex-col bg-gray-200">
         <div className="mx-auto flex flex-col">
-
-          <Cards >
-          </Cards>
-
           <input
             placeholder="name"
             value={form.name}
@@ -56,8 +66,20 @@ export default function Home() {
           </Button>
         </div>
 
-        <div className="mt-5">
-          {gifts.data?.map((gift) => <div>{gift.name}</div>)}
+        <div className="m-5 flex flex-wrap justify-center gap-4">
+          {gifts.data?.map((gift) => (
+            <Card key={gift.id} className="w-1/4">
+              <CardHeader>{gift.name}</CardHeader>
+              <CardDescription>{gift.descripton}</CardDescription>
+              <img className="w-full" src={gift.photoUrl} alt={gift.name} />
+              <CardFooter className="mt-6 flex justify-between">
+                <div className="mt-auto text-xl font-bold tracking-tighter">
+                  {formatMoney(gift.price)}
+                </div>
+                <Button size="lg">Comprar</Button>
+              </CardFooter>
+            </Card>
+          ))}
         </div>
       </main>
     </>
