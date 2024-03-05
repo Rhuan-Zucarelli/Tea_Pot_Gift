@@ -29,9 +29,9 @@ export default function Home() {
   const formatMoney = (value: number) =>
     Number.isInteger(value)
       ? Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        }).format(value / 100)
+        style: "currency",
+        currency: "BRL",
+      }).format(value / 100)
       : "...";
 
   return (
