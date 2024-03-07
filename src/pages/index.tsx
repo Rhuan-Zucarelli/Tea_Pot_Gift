@@ -14,6 +14,7 @@ import {
 } from "next/components/ui/card";
 import { z } from "zod";
 import { DrawerDemo } from "./drawer";
+import { Drawer, DrawerTrigger } from "next/components/ui/drawer";
 
 export default function Home() {
   const createGift = api.gift.create.useMutation();
@@ -77,12 +78,11 @@ export default function Home() {
                 <div className="mt-auto text-xl font-bold tracking-tighter">
                   {formatMoney(gift.price)}
                 </div>
-                <Button size="lg">Comprar</Button>
+                <DrawerDemo/>
               </CardFooter>
             </Card>
           ))}
         </div>
-        <DrawerDemo />
       </main>
 
     </>
