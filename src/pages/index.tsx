@@ -13,6 +13,7 @@ import {
   CardHeader,
 } from "next/components/ui/card";
 import { z } from "zod";
+import { DrawerDemo } from "./drawer";
 
 export default function Home() {
   const createGift = api.gift.create.useMutation();
@@ -81,7 +82,9 @@ export default function Home() {
             </Card>
           ))}
         </div>
+        <DrawerDemo />
       </main>
+
     </>
   );
 }
