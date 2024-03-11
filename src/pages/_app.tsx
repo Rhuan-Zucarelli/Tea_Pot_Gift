@@ -6,6 +6,7 @@ import { api } from "next/utils/api";
 
 import "next/styles/globals.css";
 import { ThemeProvider } from "next/components/ui/theme/theme-provider";
+import { Toaster } from "sonner";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -21,6 +22,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
       >
         <Component {...pageProps} />
       </ThemeProvider>
+      <Toaster />
     </SessionProvider>
   );
 };
