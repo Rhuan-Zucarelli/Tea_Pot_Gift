@@ -15,6 +15,8 @@ import {
 import { z } from "zod";
 import { DrawerDemo } from "./drawer";
 import { Drawer, DrawerTrigger } from "next/components/ui/drawer";
+import { SonnerDemo } from "./sonner";
+
 
 export default function Home() {
   const createGift = api.gift.create.useMutation();
@@ -44,8 +46,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex h-screen flex-col bg-gray-200">
-        <div className="mx-auto flex flex-col">
+      <main className="flex min-h-screen flex-col bg-gray-200">
+        {/* <div className="mx-auto flex flex-col">
           <input
             placeholder="name"
             value={form.name}
@@ -66,19 +68,19 @@ export default function Home() {
           <Button onClick={() => createGift.mutate(form)}>
             Criar presente
           </Button>
-        </div>
+        </div> */}
 
         <div className="m-5 flex flex-wrap justify-center gap-4">
           {gifts.data?.map((gift) => (
-            <Card key={gift.id} className="w-1/4">
+            <Card key={gift.id} className="w-96 flex flex-col">
               <CardHeader>{gift.name}</CardHeader>
               <CardDescription>{gift.descripton}</CardDescription>
-              <img className="w-full" src={gift.photoUrl} alt={gift.name} />
+              <img className="m-auto size-full" src={gift.photoUrl} alt={gift.name} />
               <CardFooter className="mt-6 flex justify-between">
                 <div className="mt-auto text-xl font-bold tracking-tighter">
                   {formatMoney(gift.price)}
                 </div>
-                <DrawerDemo/>
+                <DrawerDemo gift={gift} />
               </CardFooter>
             </Card>
           ))}
