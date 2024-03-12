@@ -69,24 +69,24 @@ export function DrawerDemo({ gift }: { gift: Gift }) {
         <DrawerContent>
 
           <div className="mx-auto w-full max-w-sm">
-            <DrawerHeader>
-              <DrawerTitle>Lorem, ipsum dolor sit amet consectetur </DrawerTitle>
-              <img src={img}></img>
-              <Button onClick={copCodePix}>
-                <MdOutlineContentCopy /> copiarrrrrr
-              </Button>
-              <pre className="mb-4 mt-6 overflow-auto rounded-lg border py-4 dark:bg-zinc-900">
-                <code className="relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">{qrCodePix.payload()}</code>
-              </pre>
-              <DrawerDescription>
-                <div key={gift.id} className="mt-auto text-xl font-bold tracking-tighter">
+            <DrawerHeader className="flex gap-1 flex-col items-center ">
+              <DrawerTitle className="w-56 text-xl text-left text-gray-100/55" > {gift.name.toUpperCase()} </DrawerTitle>
+              <DrawerDescription className="w-56 text-left mb-4 ">
+                <div key={gift.id} className="mt-auto text-xl font-normal text-white tracking-wider">
                   {formatMoney(gift.price)}
                 </div>
               </DrawerDescription>
+              <img className="w-56 mb-4 rounded-3xl" src={img}></img>
+              {/* <pre className="mb-4 mt-6 max-w-80 overflow-auto rounded-lg border py-4 dark:bg-zinc-900">
+                <code className="relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">{qrCodePix.payload()}</code>
+              </pre> */}
+              <Button className="w-56 text-white border-solid border-2" variant="ghost" onClick={copCodePix}>
+                <MdOutlineContentCopy className="mr-2 " /> Copiar codigo PIX
+              </Button>
             </DrawerHeader>
             <DrawerFooter>
-              <DrawerClose asChild>
-                <Button variant="ghost">Cancel</Button>
+              <DrawerClose>
+                <Button className="w-56  text-white" variant="ghost">Cancel</Button>
               </DrawerClose>
             </DrawerFooter>
           </div>
