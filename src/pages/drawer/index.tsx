@@ -64,13 +64,12 @@ export function DrawerDemo({ gift }: { gift: Gift }) {
 
       <Drawer >
         <DrawerTrigger asChild>
-          <Button size={'lg'}>Comprar</Button>
+          <Button className="bg-white text-black hover:text-white hover:bg-black border-solid border-2 border-primary" size={'lg'}>Comprar</Button>
         </DrawerTrigger>
         <DrawerContent>
 
           <div className="mx-auto w-full max-w-sm">
             <DrawerHeader className="flex gap-1 flex-col items-center ">
-              <DrawerTitle className="w-56 text-xl text-left text-gray-100/55" > {gift.name.toUpperCase()} </DrawerTitle>
               <DrawerDescription className="w-56 text-left mb-4 ">
                 <div key={gift.id} className="mt-auto text-xl font-normal text-white tracking-wider">
                   {formatMoney(gift.price)}

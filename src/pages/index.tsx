@@ -72,7 +72,7 @@ export default function Home() {
 
         <div className="m-5 flex flex-wrap justify-center gap-4">
           {gifts.data?.map((gift) => (
-            <Card key={gift.id} className="w-96 flex flex-col">
+            <Card key={gift.id} className="w-96 flex flex-col font-bold text-xl">
               <CardHeader>{gift.name}</CardHeader>
               <CardDescription>{gift.descripton}</CardDescription>
               <img className="m-auto size-full" src={gift.photoUrl} alt={gift.name} />
