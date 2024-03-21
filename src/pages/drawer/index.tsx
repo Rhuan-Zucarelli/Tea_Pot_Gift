@@ -35,7 +35,7 @@ export function DrawerDemo({ gift }: { gift: Gift }) {
 
   const qrCodePix = QrCodePix({
     version: '01',
-    key: '09109678905', //or any PIX key
+    key: '99999999999', //or any PIX key
     name: 'Rhuan Carlos Zucarelli',
     city: 'SAO PAULO',
     message: 'Pay me :)',
